@@ -1,48 +1,92 @@
-import PyPDF2
-import textract
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+# Import libraries
+from PIL import Image
+import pytesseract
+import sys
+from pdf2image import convert_from_path
+import os
+from . import models
+
+# Path of the pdf
+
+pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+''' 
+Part #1 : Converting PDF to images 
+'''
 
 
-class ReadPdf():
-    def __init__(self, filename, pdfFileObj, num_pages, count, text):
-        filename = self.filename
-        pdfFileObj = self.pdfFileObj
-        numPages = self.num_pages
-        count = self.count
-        text = self.text
+def pdf(pdf_file, name):
 
-    filename = 'PROPOSAL.pdf'
-    #open allows you to read the file
-    pdfFileObj = open(filename,'rb')
-    #The pdfReader variable is a readable object that will be parsed
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-    #discerning the number of pages will allow us to parse through all #the pages
-    num_pages = pdfReader.numPages
-    count = 0
-    text = ""
-    #The while loop will read each page
-    while count < num_pages:
-        pageObj = pdfReader.getPage(count)
-        count +=1
-        text += pageObj.extractText()
-    #This if statement exists to check if the above library returned #words. It's done because PyPDF2 cannot read scanned files.
-    if text != "":
-       text = text
-    #If the above returns as False, we run the OCR library textract to #convert scanned/image based PDF files into text
-    else:
-       text = textract.process(fileurl, method='tesseract', language='eng')
-    # Now we have a text variable which contains all the text derived #from our PDF file. Type print(text) to see what it contains. It #likely contains a lot of spaces, possibly junk such as '\n' etc.
-    # Now, we will clean our text variable, and return it as a list of keywords.
-    #The word_tokenize() function will break our text phrases into #individual words
-    tokens = word_tokenize(text)
-    #we'll create a new list which contains punctuation we wish to clean
-    punctuations = ['(',')',';',':','[',']',',']
-    #We initialize the stopwords variable which is a list of words like #"The", "I", "and", etc. that don't hold much value as keywords
-    stop_words = stopwords.words('english')
-    #We create a list comprehension which only returns a list of words #that are NOT IN stop_words and NOT IN punctuations.
-    keywords = [word for word in tokens if not word in stop_words and not word in punctuations]
-    
-    
-    
-start = ReadPdf()
+    # Store all the pages of the PDF in a variable
+    pages = convert_from_path(pdf_file, 500, poppler_path=r"C:\poppler\bin")
+
+    # Counter to store images of each page of PDF to image
+    image_counter = 1
+
+    # Iterate through all the pages stored above
+    for page in pages:
+        # Declaring filename for each page of PDF as JPG
+        # For each page, filename will be:
+        # PDF page 1 -> page_1.jpg
+        # PDF page 2 -> page_2.jpg
+        # PDF page 3 -> page_3.jpg
+        # ....
+        # PDF page n -> page_n.jpg
+        filename = name + "_page_" + str(image_counter) + ".jpg"
+
+        # Save the image of the page in system
+        page.save(filename, 'JPEG')
+
+        #Saving the image of the page to the database
+        # instance = models.Resume_Information_Pictures(info = model, picture = page.save(filename, 'JPEG'))
+        # instance.save()
+
+        # Increment the counter to update filename
+        image_counter += 1
+
+    ''' 
+    Part #2 - Recognizing text from the images using OCR 
+    '''
+    # Variable to get count of total number of pages
+    filelimit = image_counter - 1
+
+    # Creating a text file to write the output
+    outfile = name+".txt"
+
+    # Open the file in append mode so that
+    # All contents of all images are added to the same file
+    f = open(outfile, "a")
+
+    # Iterate from 1 to total number of pages
+    for i in range(1, filelimit + 1):
+        # Set filename to recognize text from
+        # Again, these files will be:
+        # page_1.jpg
+        # page_2.jpg
+        # ....
+        # page_n.jpg
+        filename = name + "_page_" + str(i) + ".jpg"
+
+        # Recognize the text as string in image using pytesserect
+        text = str(((pytesseract.image_to_string(Image.open(filename)))))
+
+        # The recognized text is stored in variable text
+        # Any string processing may be applied on text
+        # Here, basic formatting has been done:
+        # In many PDFs, at line ending, if a word can't
+        # be written fully, a 'hyphen' is added.
+        # The rest of the word is written in the next line
+        # Eg: This is a sample text this word here GeeksF-
+        # orGeeks is half on first line, remaining on next.
+        # To remove this, we replace every '-\n' to ''.
+        text = text.replace('-\n', '')
+
+        # Finally, write the processed text to the file.
+        f.write(text)
+
+    # Close the file after writing all the text.
+    f.close()
+
+    f = open(outfile, 'r+')
+
+    return f.readlines()
+
