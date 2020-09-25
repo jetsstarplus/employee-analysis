@@ -17,40 +17,44 @@
     </div>
     <div>
         {% if person %}
-            <div class="row text-center" style="font-size: 25px">
+            <div class="row" style="font-size: 25px">
                 <div class="col-sm"><span class="badge badge-success">Total Score:</span></div>
                 <div class="col-sm">{{person.rating | floatformat:2}}</div>
             </div>
             <br>
 
+
             {% if specifics %}
-            <h6 class="text-center">Results breakdown</h6>
+            <div class="row">
+                 <h6 class="text-center">Results breakdown</h6>
             <!--<p>{{content.pdf_text}}</p>-->
 
-            <!--{{table}}-->
-            {% for key, values in specifics.items %}
+                        <!--{{table}}-->
+                        {% for key, values in specifics.items %}
 
-                    <table class="table">
+                                <table class="table">
 
-                        <thead>
-                        <tr>
-                            <th scope="col">Module</th>
-                            <th scope="col">{{key | title}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for key,values in values.items %}
-                            <tr>
-                                <td>{{key}}</td>
-                                <td>{{values}}</td>
-                            </tr>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Module</th>
+                                        <th scope="col">{{key | title}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for key,values in values.items %}
+                                        <tr>
+                                            <td>{{key}}</td>
+                                            <td>{{values}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
                         {% endfor %}
-                        </tbody>
-                    </table>
-            {% endfor %}
-        {% endif %}
-        {% endif %}
-    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
     {% if person %}
 
     <div>
