@@ -12,6 +12,12 @@ from django.utils import timezone
 from .models import Resumes, Resume_Information
 from . import textExtract
 import pandas as pd
+import environ
+
+env=environ.Env(
+    SLEEP = (int, 5)
+)
+
 
 
 @login_required(login_url = '/login/')
@@ -60,7 +66,7 @@ def get_form(request):
 
             else:
                 # Calling the method of scanning the pdf document and outputting the result in a text file using OCR
-
+                time.sleep(env('SLEEP'))
                 resume = Resumes.objects.filter(id=instance.id).get()
                 # scanned_pdf = PdfScan.pdf(resume.file.url, uname)
                 scanned_text=textExtract.pdfFileScan(resume.file.url, uname)
