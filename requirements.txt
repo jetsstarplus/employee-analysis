@@ -6,6 +6,8 @@ asgiref==3.2.3
 backcall==0.2.0
 beautifulsoup4==4.8.0
 billiard==3.3.0.23
+boto3==1.15.5
+botocore==1.18.5
 bs4==0.0.1
 cachetools==4.1.1
 celery==3.1.26.post2
@@ -23,6 +25,7 @@ Django==3.0.3
 django-celery==3.3.1
 django-cors-headers==3.4.0
 django-crispy-forms==1.8.1
+django-environ==0.4.5
 django-extensions==3.0.2
 django-filter==2.3.0
 django-google-analytics==2
@@ -54,6 +57,7 @@ IMAPClient==2.1.0
 ipython==7.16.1
 ipython-genutils==0.2.0
 jedi==0.17.1
+jmespath==0.10.0
 kiwisolver==1.2.0
 kombu==3.0.37
 lxml==4.5.2
@@ -65,8 +69,6 @@ numpy==1.19.2
 olefile==0.46
 pandas==1.1.2
 parso==0.7.0
-pdf2image==1.13.1
-pdfminer.six==20181108
 phonenumbers==8.12.8
 pickleshare==0.7.5
 Pillow==7.1.1
@@ -89,9 +91,11 @@ python-docx==0.8.10
 python-pptx==0.6.18
 pytz==2018.9
 redis==3.5.3
+reportlab==3.5.51
 requests==2.23.0
 rsa==4.6
 Rx==1.6.1
+s3transfer==0.3.3
 singledispatch==3.4.0.3
 six==1.12.0
 sortedcontainers==2.2.2

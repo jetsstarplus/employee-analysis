@@ -10,7 +10,7 @@ class Resumes(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length = 100, unique = True)
     file = models.FileField(upload_to='resume')
-    date_pub = models.DateTimeField(default=timezone.now())
+    date_pub = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Resumes"
@@ -33,7 +33,7 @@ class Resume_Information(models.Model):
     pdf_text = models.TextField()
     status = models.BooleanField(default=False)
     rating=models.FloatField()
-    date_pub = models.DateTimeField(default=timezone.now())
+    date_pub = models.DateTimeField(default=timezone.now)
 
     def was_published_recently(self):
         now = timezone.now()

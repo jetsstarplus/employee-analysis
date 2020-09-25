@@ -46,7 +46,11 @@
                     <tr>
                       <td><a href="{% url 'ruth:details' person.id %}">{{person.owner.name}}</a></td>
                       <td>{{person.owner.email}}</td>
-                      <td><span class="badge badge-success">{{person.owner.was_published_recently}}</span></td>
+                      <td><span
+                              {% if person.owner.was_published_recently =="True" %}
+                                class="badge badge-success"
+                              {% else %} class="badge badge-danger"
+                              {% endif %}>{{person.owner.was_published_recently}}</span></td>
                       <td>
                         <div class="sparkbar" data-color="#00a65a" data-height="20">{{person.rating | floatformat:2}}</div>
                       </td>
