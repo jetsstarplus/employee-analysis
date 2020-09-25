@@ -13,9 +13,10 @@ from .models import Resumes, Resume_Information
 from . import textExtract
 import pandas as pd
 import environ
+import time
 
 env=environ.Env(
-    SLEEP = (int, 5)
+    SLEEP = (int, 1)
 )
 
 
