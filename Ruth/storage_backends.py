@@ -7,10 +7,10 @@ class MediaStorage(S3Boto3Storage):
 
 
 class StaticStorage(S3Boto3Storage):
-    location = 'media'
+    location = 'static'
 
 
 class PrivateMediaStorage(S3Boto3Storage):
-    location = 'media'
+    location = 'privatemedia'
     default_acl = 'private'
     file_overwrite = False
