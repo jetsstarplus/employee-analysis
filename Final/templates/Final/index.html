@@ -47,7 +47,7 @@
                       <td><a href="{% url 'ruth:details' person.id %}">{{person.owner.name}}</a></td>
                       <td>{{person.owner.email}}</td>
                       <td><span
-                              {% if person.owner.was_published_recently =="True" %}
+                              {% if person.was_published_recently is True %}
                                 class="badge badge-success"
                               {% else %} class="badge badge-danger"
                               {% endif %}>{{person.owner.was_published_recently}}</span></td>
