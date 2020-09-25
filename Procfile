@@ -1,1 +1,1 @@
-web: gunicorn hilmus.wsgi --log-file -
+web: gunicorn Ruth.wsgi --log-file -
