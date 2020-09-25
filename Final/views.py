@@ -10,7 +10,7 @@ import datetime
 from .forms import PdfForm
 from django.utils import timezone
 from .models import Resumes, Resume_Information
-from . import PdfScan, textExtract
+from . import textExtract
 import pandas as pd
 
 
