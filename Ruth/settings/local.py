@@ -45,7 +45,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 
 # Simplified static file serving.
-MEDIA_URL = "/media/"
+# MEDIA_URL = "/media/"
 # MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"

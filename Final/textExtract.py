@@ -76,12 +76,12 @@ def pdfFileScan(file, name, ):
                                      'microsoft ASP.NET', 'web api', 'node.js', 'deno.js']}
 
     # Initializie score counters for each area
-    quality = 0
-    operations = 0
+    multitasking = 0
+    attention = 0
     supplychain = 0
     project = 0
     data = 0
-    healthcare = 0
+    software = 0
 
     # Create an empty list where the scores will be stored
     scores = []
@@ -89,17 +89,17 @@ def pdfFileScan(file, name, ):
     # Obtain the scores for each area
     for area in terms.keys():
 
-        if area == 'Quality/Six Sigma':
+        if area == 'MultiTasking':
             for word in terms[area]:
                 if word in text:
-                    quality += 1
-            scores.append(quality)
+                    multitasking += 1
+            scores.append(multitasking)
 
-        elif area == 'Operations management':
+        elif area == 'Attention to details':
             for word in terms[area]:
                 if word in text:
-                    operations += 1
-            scores.append(operations)
+                    attention += 1
+            scores.append(attention)
 
         elif area == 'Supply chain':
             for word in terms[area]:
@@ -122,8 +122,8 @@ def pdfFileScan(file, name, ):
         else:
             for word in terms[area]:
                 if word in text:
-                    healthcare += 1
-            scores.append(healthcare)
+                    software += 1
+            scores.append(software)
 
     # Create a data frame with the scores summary
     summary = pd.DataFrame(scores, index=terms.keys(), columns=['score']).sort_values(by='score', ascending=False)

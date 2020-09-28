@@ -16,7 +16,7 @@ import environ
 import time
 
 env=environ.Env(
-    SLEEP = (int, 1)
+    SLEEP = (int, 0)
 )
 
 
@@ -60,6 +60,8 @@ def get_form(request):
                 uname = request.POST['name']
                 umail = request.POST['email']
 
+
+
                 instance = Resumes(file=ufile, name=uname, email=umail, date_pub=timezone.now())
                 instance.save()
             except:
@@ -74,7 +76,7 @@ def get_form(request):
                 # scanned_text
                 total_score = 0.00
                 count=0
-                for key, value  in dict(scanned_text).items():
+                for key, value in dict(scanned_text).items():
                     for value in value.values():
                         total_score+=value
                         count+=1
