@@ -18,15 +18,25 @@
     <div>
         {% if person %}
             <div class="row" style="font-size: 25px">
-                <div class="col-sm"><span class="badge badge-success">Total Score:</span></div>
-                <div class="col-sm">{{person.rating | floatformat:2}}</div>
+                <div class="col"><span class="badge badge-success">Total Score:</span></div>
+                <span class="col">{{person.rating | floatformat:2}}</span>
             </div>
             <br>
+            <div class="row">
+                <div class="col-sm">
+                    <span><h6 class="text-info">Email: </h6></span><span><p>{{person.owner.email}}</p></span>
+                </div>
+
+                 <div class="col-sm">
+                     <span><h6 class="text-info">Resume: </h6></span><span><a class="btn btn-outline-secondary" href="/{{person.owner.file}}">{{person.owner.file}}</a></span>
+                </div>
+
+            </div>
 
 
             {% if specifics %}
             <div class="row">
-                 <h6 class="text-center">Results breakdown</h6>
+                 <h3 class="text-center text-primary">Results breakdown</h3>
             <!--<p>{{content.pdf_text}}</p>-->
 
                         <!--{{table}}-->
@@ -60,7 +70,7 @@
     <div>
         <h6 class="text-center">Resume</h6>
         <embed height="500"
-                src="{{person.owner.file.url}}" type="application/pdf" width="100%" height="100%">
+                src="/{{person.owner.file}}" type="application/pdf" width="100%" height="100%">
     </div>
     {% endif %}
 </div>

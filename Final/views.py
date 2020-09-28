@@ -101,8 +101,17 @@ def get_form(request):
 def details(request, person_id):
     person = get_object_or_404(Resume_Information, pk=person_id)
     specifics=eval(person.pdf_text)
+    sessions = Session.objects.all().count()
+    total = Resumes.objects.all().count()
+    application = Resume_Information.objects.all().order_by('-date_pub')
+    new = Resume_Information.objects.filter(status=False).all().count()
+
     context={
         'person':person,
-        'specifics':specifics
+        'specifics':specifics,
+        'application': application,
+        'total': total,
+        'sessions': sessions,
+        'new': new
     }
     return render(request, 'Final/detail.html', context)
