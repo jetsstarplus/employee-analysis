@@ -42,7 +42,7 @@
 			  align-items: center;
 			  padding: 15px;
 			  position:relative;
-			  font-size:10px;
+			  <!--font-size:12px;-->
 			  background-repeat: no-repeat;
 			  background-position: center;
 			  background-size: cover;
@@ -108,17 +108,6 @@
 				font-weight:700;
 			}
 
-
-
-			<!--@media(max-width:800px){-->
-				<!--.logo{-->
-					<!--font-size:1.8rem;-->
-					<!--line-height:1;-->
-					<!--text-transform:uppercase;-->
-				<!--}-->
-			<!--}-->
-
-
 			.links{
 				font-size:1.5rem;
 				font-family: Verdana;
@@ -145,13 +134,21 @@
 				align-self:center;
 			}
 
+			.support{
+				padding-top:2rem;
+				display: flex;
+				justify-content:center;
+				align-items:center;
+				text-align:center;
+				align-self:flex-end;
+				justify-self:flex-end;
+				}
+
 			h1{
-				font-size: 4rem;
-				line-height:2;
+				font-size: 3.2rem;
 				}
 			h3{
-				font-size:3rem;
-				line-height:1.5
+				font-size:2.5rem;
 				}
 			h5{
 				font-size:2rem;
@@ -160,10 +157,70 @@
 			   line-height:2.5;
 			   }
 
+			@media(min-width:1000px){
 
-				@media(max-width:390px){
+				.support{
+					width:40%;
+				}
+			}
+
+			@media(max-width:800px){
+				.logo{
+					font-size:1.8rem;
+					line-height:1;
+					text-transform:uppercase;
+				}
+
+				.body{
+					line-height:2.7;
+					}
+
+				.text-content{
+					line-height:2.3;
+					}
+
+				h1{
+					font-size: 3.1rem;
+					}
+				h3{
+					font-size:2.5rem;
+					}
+				h5{
+					font-size:1.8rem;
+					}
+			}
+
+			@media(max-width:600px){
 				.logo{
 					font-size:1.6rem;
+					line-height:1;
+					text-transform:uppercase;
+				}
+
+				.body{
+					line-height:2.7;
+					}
+
+				.text-content{
+					line-height:2.0;
+					}
+
+				h1{
+					font-size:2.4rem;
+					}
+				h3{
+					font-size:1.8rem;
+					}
+				h5{
+					font-size:1.4rem;
+					}
+			}
+
+
+				@media(max-width:420px){
+
+				.logo{
+					font-size:1.4rem;
 				}
 
 				.body{
@@ -171,20 +228,73 @@
 					}
 
 				.text-content{
-					line-height:3.5;
+					line-height:2.1;
 					}
 
 				h1{
-					font-size: 2.3rem;
+					font-size: 2.1rem;
 					}
 				h3{
-					font-size:1.8rem;
+					font-size:1.7rem;
 					}
 				h5{
-					font-size:1.5rem;
+					font-size:1.4rem;
+					}
+			}
+
+
+				@media(max-width:330px){
+				.header{
+					height:14%;
+					}
+				.logo{
+					font-size:1.2rem;
+				}
+
+				.body{
+					line-height:1.5;
 					}
 
+				.text-content{
+					line-height:2.0;
+					}
 
+				h1{
+					font-size: 2.0rem;
+					}
+				h3{
+					font-size:1.5rem;
+					}
+				h5{
+					font-size:1.2rem;
+					}
+			}
+
+			@media(max-width:300px){
+				.header{
+					height:14%;
+					}
+				.logo{
+					font-size:1rem;
+				}
+
+				.body{
+					line-height:1.5;
+					}
+
+				.text-content{
+					line-height:1.7;
+					}
+
+				h1{
+					font-size: 1.7rem;
+					}
+				h3{
+					font-size:1.3rem;
+					}
+				h5{
+					font-size:1rem;
+					}
 			}
 	</style>
 </head>
@@ -197,7 +307,7 @@
 				<div class="header">
 					<div class = "content container">
 						<div class="logo">
-							Resume Analysis
+							Resumer
 						</div>
 						<div class="links">
 							<a href="{% url 'login' %}">
@@ -226,6 +336,9 @@
 							</button>
 						</a>
 					</div>
+				</div>
+				<div class="support container">
+					<p style="color:white">Upload your resume of pdf/docx format<em>other formats are not supported</em> And check the results, The application currently gives computer science <em>excetra</em> related applications</p>
 				</div>
 			</div>
 		</div>
