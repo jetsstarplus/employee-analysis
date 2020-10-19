@@ -1,0 +1,231 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Resume | home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href=" {% static 'Final/logo/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href=" {% static 'Final/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'Final/css/main.css' %}">
+<!--===============================================================================================-->
+	<style>
+		.homepage{
+			  width: 100vw;
+			  min-height: 100vh;
+			  display: -webkit-box;
+			  display: -webkit-flex;
+			  display: -moz-box;
+			  display: -ms-flexbox;
+			  display: flex;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			  align-items: center;
+			  padding: 15px;
+			  position:relative;
+			  font-size:10px;
+			  background-repeat: no-repeat;
+			  background-position: center;
+			  background-size: cover;
+			  position: relative;
+			  z-index: 1;
+			}
+
+			.dark{
+				position:absolute;
+				align-self:center;
+				width:100%;
+				height:100%;
+				background-color:rgba(0, 0, 0, 0.6);
+				display: -webkit-box;
+				  display: -webkit-flex;
+				  display: -moz-box;
+				  display: -ms-flexbox;
+				display:flex;
+				flex-direction:column;
+				align-items:flex-start;
+			}
+
+			.header{
+				width:100%;
+				height: 12%;
+				<!--opacity:0.8;-->
+				 background: rgba(145, 82, 248, 0.8);
+				  background: -webkit-linear-gradient(bottom, rgba(117, 121, 255, 0.8) , rgba(178, 36, 239, 0.8));
+				  background: -o-linear-gradient(bottom, rgba(117, 121, 255, 0.8) , rgba(178, 36, 239, 0.8));
+				  background: -moz-linear-gradient(bottom, rgba(117, 121, 255, 0.8), rgba(178, 36, 239, 0.8));
+				  background: linear-gradient(bottom, rgba(117, 121, 255, 0.8), rgba(178, 36, 239, 0.8));
+				  display: -webkit-box;
+				  display: -webkit-flex;
+				  display: -moz-box;
+				  display: -ms-flexbox;
+				  display:flex;
+				  flex-direction:row;
+				  justify-content:space-between;
+
+			}
+
+			.content{
+				height: 100%;
+				color: #fff;
+				display: flex;
+				justify-content:space-between;
+			}
+
+			a{
+				color: #fff;
+				z-index:10;
+				padding-left:.5rem;
+				}
+
+
+			.logo{
+				font-size:2.5rem;
+				font-family: Verdana;
+				align-self: center;
+				justify-self:center;
+				z-index:10;
+				text-transform:uppercase;
+				font-weight:700;
+			}
+
+
+
+			<!--@media(max-width:800px){-->
+				<!--.logo{-->
+					<!--font-size:1.8rem;-->
+					<!--line-height:1;-->
+					<!--text-transform:uppercase;-->
+				<!--}-->
+			<!--}-->
+
+
+				@media(max-width:390px){
+				.logo{
+					font-size:1.6rem;
+				}
+
+				.body{
+					line-height:2.5;
+					}
+
+				.text-content{
+					line-height:3.5;
+					}
+
+			}
+			.links{
+				font-size:1.5rem;
+				font-family: Verdana;
+				align-self: center;
+				justify-self:flex-end;
+				z-index:10;
+				display:flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.body{
+				color: white;
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				text-align:center;
+				line-height:3;
+				flex-direction:column;
+			}
+			.body-content{
+				padding-top:2rem;
+				line-height:4;
+				align-self:center;
+			}
+			.text-content{
+			   line-height:2.5;
+			   }
+
+	</style>
+</head>
+<body>
+
+
+	<div class="limiter">
+		<div class="homepage" style="background-image: url({% static 'Final/images/bg-01.jpg'%});">
+			<div class="dark">
+				<div class="header">
+					<div class = "content container">
+						<div class="logo">
+							Resume Analysis
+						</div>
+						<div class="links">
+							<a href="{% url 'login' %}">
+								<button class="login100-form-btn">
+									Login
+								</button>
+							</a>
+							<!--<a href= "{% url 'ruth:file'%}">-->
+								<!--<button class="login100-form-btn">-->
+									<!--Upload Cv-->
+								<!--</button>-->
+							<!--</a>-->
+						</div>
+					</div>
+				</div>
+				<div class="body container">
+					<div class="body-content">
+						<h1 class="text-content">Resume Anaysis System</h1>
+						<h3 class="text-content">Final Year Project(Y4/S2)</h3>
+						<h5 class="text-content">By <em>Ruth Nyamusi</em></h5>
+					</div>
+					<div class="link">
+						<a href="{% url 'ruth:file'%}">
+							<button class="login100-form-btn">
+								Get Started With Your Resume
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'Final/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'Final/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'Final/js/main.js' %}"></script>
+
+</body>
+</html>

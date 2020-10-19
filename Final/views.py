@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.sessions.models import Session
 import datetime
+from django.core.files import File
 
 
 from .forms import PdfForm
@@ -38,7 +39,7 @@ def home(request):
 
 
 def index(request):
-    return render(request, 'Final/home.html')
+    return render(request, 'Final/homepage.html')
 
 # def success(request):
 #     return render(request, 'Final/success.html')
@@ -97,7 +98,7 @@ def get_form(request):
         context = {'form': form}
         return render(request, 'Final/pdfForm.html', context)
 
-
+@login_required(login_url='/login/')
 def details(request, person_id):
     person = get_object_or_404(Resume_Information, pk=person_id)
     specifics=eval(person.pdf_text)
@@ -105,6 +106,7 @@ def details(request, person_id):
     total = Resumes.objects.all().count()
     application = Resume_Information.objects.all().order_by('-date_pub')
     new = Resume_Information.objects.filter(status=False).all().count()
+
 
     context={
         'person':person,
@@ -115,3 +117,13 @@ def details(request, person_id):
         'new': new
     }
     return render(request, 'Final/detail.html', context)
+
+
+# def pdfShow(request, url):
+#     pdf
+#
+# def downloadPdf(request, applicant_id):
+#     file_path=Resume_Information.objects.get(pk=applicant_id)
+#     path=file_path.owner.file.url
+#
+#     f1=open(path, 'r')
