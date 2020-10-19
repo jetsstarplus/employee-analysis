@@ -1,8 +1,8 @@
-#Resume Analysis System
+# Resume Analysis System
 
 This is a python application that scans uploades Resumes from applicants and and returns the results based on the computer science field
 
-##Getting started
+## Getting started
 Clone the repository [Resume analysis system](https://github.com/jetsstarplus/employee-analysis.git)<br>
 Download [virtualenv](https://pypi.org/project/virtualenv/)
 ```bash
@@ -31,10 +31,10 @@ Configure The right database setting for the db you are using.
 `postgresql` is another Relational database management system whose configurations and usage can be found at 
 [official download page](https://www.postgresql.org/download/)
 
-###Wrapping Up
+### Wrapping Up
 Fire up your django dev server via the following command
 ```python
     python manage.py runserver
 ```
 
-####Done Happy coding and presentation
+#### Done Happy coding and presentation
