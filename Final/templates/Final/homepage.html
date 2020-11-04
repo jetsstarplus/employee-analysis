@@ -324,21 +324,31 @@
 					</div>
 				</div>
 				<div class="body container">
-					<div class="body-content">
-						<h1 class="text-content">Resume Anaysis System</h1>
-						<h3 class="text-content">Final Year Project(Y3/S2)</h3>
-						<h5 class="text-content">By <em>Victor Okinyi Otieno</em></h5>
+					<div class="row">
+						<div class="body-content card" style="color:#000; ">
+							<div class="card-header">
+								<h1>Resume Anaysis System</h1>
+							</div>
+						<h3 class="card-title">Final Year Project(Y3/S2)</h3>
+						<h5 class="card-body">By <em>Victor Okinyi Otieno</em></h5>
+							<div class="link center">
+								<a href="{% url 'ruth:file'%}">
+									<button class="login100-form-btn">
+										Get Started With Your Resume
+									</button>
+								</a>
+							</div>
+						</div>
 					</div>
-					<div class="link">
-						<a href="{% url 'ruth:file'%}">
-							<button class="login100-form-btn">
-								Get Started With Your Resume
-							</button>
-						</a>
-					</div>
+
+
 				</div>
 				<div class="support container">
 					<p style="color:white">Upload your resume of pdf/docx format<em>other formats are not supported</em> And check the results, The application currently gives computer science <em>excetra</em> related applications</p>
+				</div>
+				<br />
+				<div class = "container card" style = "align-self:flex-end">
+					<p class="card-body">This project assumes that you had already seen the advertisement of a software engineer's position and is to be directed to the application page</p>
 				</div>
 			</div>
 		</div>

@@ -39,7 +39,7 @@ def home(request):
 
 
 def index(request):
-    return render(request, 'Final/homepage.html')
+    return render(request, 'index/index.html')
 
 # def success(request):
 #     return render(request, 'Final/success.html')
