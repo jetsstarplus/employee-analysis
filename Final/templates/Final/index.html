@@ -36,6 +36,7 @@
                       <th>Emails</th>
                       <th>Recent</th>
                       <th>Total Scores</th>
+                      <th>Position Applied</th>
                       <th>Date Sent</th>
                       <th>Time</th>
                     </tr>
@@ -54,6 +55,7 @@
                       <td>
                         <div class="sparkbar" data-color="#00a65a" data-height="20">{{person.rating | floatformat:2}}</div>
                       </td>
+                        <td>{% if person.position %}{{person.position}}{% else %} None {% endif %}</td>
                       <td><span class="badge badge-secondary">{{person.owner.date_pub | date}}</span></td>
                       <td><span class="badge badge-secondary">{{person.owner.date_pub | time}}</span></td>
                     </tr>

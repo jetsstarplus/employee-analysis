@@ -8,11 +8,18 @@
 
 <div class = 'container'>
    <div class="alert alert-primary text-center" role="alert">
-        <span class="" style="font-size:30px">
-
-        {% if person %}
-            {{person.owner.name}}
-        {% endif %}
+        <span class="row" style="font-size:30px">
+            <span class = "col-md-6">
+            {% if person %}
+                {{person.owner.name}}
+            {% endif %}
+            </span>
+            <span class="col-md-6">
+                Position:
+                {% if person %}
+                    {{person.owner.position}}
+                {% endif %}
+            </span>
         </span>
     </div>
     <div>
@@ -28,7 +35,7 @@
                 </div>
 
                  <div class="col-sm">
-                     <span><h6 class="text-info">Resume: </h6></span><span><a class="btn btn-outline-secondary" href="">{{person.owner.file}}</a></span>
+                     <span><h6 class="text-info">Resume: </h6></span><span><a class="btn btn-outline-secondary" href="{{person.owner.file.url}}">{{person.owner.file}}</a></span>
                 </div>
 
             </div>

@@ -57,23 +57,13 @@ def get_form(request):
 
         if form.is_valid():
             try:
-                ufile = request.FILES['file']
-                uname = request.POST['name']
-                umail = request.POST['email']
 
-
-
-                instance = Resumes(file=ufile, name=uname, email=umail, date_pub=timezone.now())
-                instance.save()
+                instance=form.save()
             except:
                 return HttpResponseRedirect('/failed/')
 
             else:
-                # Calling the method of scanning the pdf document and outputting the result in a text file using OCR
-                time.sleep(env('SLEEP'))
-                resume = Resumes.objects.filter(id=instance.id).get()
-                # scanned_pdf = PdfScan.pdf(resume.file.url, uname)
-                scanned_text=textExtract.pdfFileScan(resume.file.url, uname)
+                scanned_text=textExtract.pdfFileScan(instance.file.url, instance.name)
                 # scanned_text
                 total_score = 0.00
                 count=0

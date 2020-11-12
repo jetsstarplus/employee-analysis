@@ -5,11 +5,21 @@ from django.contrib.postgres.fields import JSONField
 
 # Create your models here.
 
+#
+class Job(models.Model):
+    name=models.CharField(max_length=40)
+    role=models.TextField()
+    date_added=models.DateTimeField(auto_now_add=True)
+    date_updated=models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Resumes(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length = 100, unique = True)
-    file = models.FileField(upload_to='resume')
+    name = models.CharField(max_length=100, verbose_name="Full Name")
+    email = models.EmailField(max_length = 100, unique = True, verbose_name="Email")
+    file = models.FileField(upload_to='resume', verbose_name="Resume")
+    position = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Applying Position")
     date_pub = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -57,7 +67,18 @@ class Resume_Information(models.Model):
         verbose_name_plural = "Uploaded Resumes"
         verbose_name = "Uploaded Resume"
 
-#
-# class Resume_Information_Pictures(models.Model):
-#     info = models.ForeignKey(Resumes, on_delete=models.CASCADE)
-#     picture = models.ImageField(upload_to = 'resume_pics')
+
+
+class Job_Requirement(models.Model):
+    job=models.ForeignKey(Job, on_delete=models.CASCADE)
+    requirement=models.TextField()
+
+    def __str__(self):
+        return self.requirement
+
+class Job_Keyword(models.Model):
+    job=models.ForeignKey(Job, on_delete=models.CASCADE)
+    keyword=models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.keyword

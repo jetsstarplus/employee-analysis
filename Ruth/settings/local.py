@@ -36,6 +36,8 @@ DATABASES ={
 #     }
 # }
 
+
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Static files (CSS, JavaScript, Images)
@@ -43,10 +45,12 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+# MEDIA_URL="/media/"
 
 # Simplified static file serving.
-# MEDIA_URL = "/media/"
-# MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 

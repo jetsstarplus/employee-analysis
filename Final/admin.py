@@ -14,11 +14,18 @@ class ResumeInformationInline(admin.TabularInline):
     list_filter = ['status']
     extra = 0
 
+class requirementsInline(admin.TabularInline):
+    model=models.Job_Requirement
+    extra=1
+
+class keywordsInline(admin.TabularInline):
+    model=models.Job_Keyword
+    extra=1
 
 class ResumeAdmin(admin.ModelAdmin):
-    list_display = ('email', 'name', 'file', 'date_pub')
+    list_display = ('email', 'position', 'name', 'file', 'date_pub')
     list_display_links = ('email', 'file')
-    search_fields = ('email', 'name')
+    search_fields = ('email', 'name', 'position')
     list_filter = ['date_pub']
     inlines = [ResumeInformationInline]
 
@@ -36,3 +43,11 @@ class ResumeInformationAdmin(admin.ModelAdmin):
 admin.site.register(models.Resume_Information, ResumeInformationAdmin)
 
 
+class JobAdmin(admin.ModelAdmin):
+    list_display=('name', 'role', 'date_added', 'date_updated')
+    list_filter=['date_added']
+    search_fields=['job', 'role']
+
+    inlines=[requirementsInline, keywordsInline]
+
+admin.site.register(models.Job, JobAdmin)
