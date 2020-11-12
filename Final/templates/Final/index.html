@@ -51,7 +51,7 @@
                               {% if person.was_published_recently is True %}
                                 class="badge badge-success"
                               {% else %} class="badge badge-danger"
-                              {% endif %}>{{person.owner.was_published_recently}}</span></td>
+                              {% endif %}>{% if person.was_published_recently%}<i class="fa fa-check"></i>{% else%}<i class="fa fa-times"></i>{% endif%} </span></td>
                       <td>
                         <div class="sparkbar" data-color="#00a65a" data-height="20">{{person.rating | floatformat:2}}</div>
                       </td>
