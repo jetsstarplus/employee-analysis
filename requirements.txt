@@ -92,7 +92,7 @@ pytz==2018.9
 redis==3.5.3
 reportlab==3.5.51
 requests==2.23.0
-rsa==4.6
+rsa==4.7
 Rx==1.6.1
 s3transfer==0.3.3
 singledispatch==3.4.0.3
