@@ -54,8 +54,8 @@ def calendar(request):
 def get_form(request):
     if request.method == 'POST':
         form = PdfForm(request.POST, request.FILES)
-
         if form.is_valid():
+            
             try:
                 instance=form.save()
             except:
@@ -81,6 +81,9 @@ def get_form(request):
                 table=dict(scanned_text)
                 context = {'content': content, 'table':table}
                 return render(request, "Final/success.html", context)
+            
+        else:
+            return HttpResponseRedirect('/failed/')
 
     else:
         form = PdfForm()
