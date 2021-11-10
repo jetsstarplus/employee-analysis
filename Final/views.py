@@ -57,7 +57,6 @@ def get_form(request):
 
         if form.is_valid():
             try:
-
                 instance=form.save()
             except:
                 return HttpResponseRedirect('/failed/')
