@@ -60,7 +60,7 @@ jedi==0.17.1
 jmespath==0.10.0
 kiwisolver==1.2.0
 kombu==3.0.37
-lxml==4.5.2
+lxml==4.9.1
 matplotlib==3.3.2
 model-mommy==2.0.0
 nltk==3.4.5
